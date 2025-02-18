@@ -1,0 +1,329 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title>Infinity</title>
+	<meta charset="UTF-8">
+	<meta name="description" content=" Divisima | eCommerce Template">
+	<meta name="keywords" content="divisima, eCommerce, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link type="image/x-icon" href="{% static 'shop/images/favicon.ico' %}" rel="shortcut icon"/>
+
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet"/>
+
+
+	<!-- Stylesheets -->
+	<link type="text/css" href="{% static 'shop/css/bootstrap.min.css' %}"/>
+	<link type="text/css" href="{% static 'shop/css/font-awesome.min.css' %}" rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/flaticon.css' %}" rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/slicknav.min.css' %}" rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/jquery-ui.min.css' %}" rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/owl.carousel.min.css' %}" rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/animate.css' %}"  rel="stylesheet"/>
+	<link type="text/css" href="{% static 'shop/css/style.css' %}" rel="stylesheet"/>
+
+
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+		<header class="header-section">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 text-center text-lg-left">
+						<!-- logo -->
+						<a href="{% url 'index' %}" class="site-logo">
+							<img src="{% static 'shop/images/logo.png' %}" alt="">
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-5">
+						<form class="header-search-form" action="{% url 'search_results' %}", method="get">
+							<input name="q" type="text" placeholder="Search on infinity ....">
+							<button><i class="flaticon-search"></i></button>
+						</form>
+					</div>
+					<div class="col-xl-4 col-lg-5">
+						<div class="user-panel">
+							<div class="up-item">
+								{% if request.user.is_authenticated %}
+								<i>{{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></i>
+								{% else %}
+								<a href="{% url 'login' %}">Войти</a> или <a href="{% url 'register' %}">Зарегистрироваться</a>
+								{% endif %}
+							</div>
+							<div class="up-item">
+								<div class="shopping-card">
+									<i class="flaticon-bag"></i>
+									<span>0</span>
+								</div>
+								<a href="{% url 'cart' %}">Корзина</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="main-navbar">
+			<div class="container">
+				<ul class="main-menu">
+					<li><a href="{% url 'index' %}">БРЕНДЫ</a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'alexandermcqueen' %}">AlexanderMcQueen</a></li>
+							<li><a href="{% url 'balenciaga' %}">Balenciaga</a></li>
+							<li><a href="{% url 'moncler' %}">Moncler</a></li>
+							<li><a href="{% url 'offwhite' %}">Off-White</a></li>
+							<li><a href="{% url 'valentino' %}">Valentino</a></li>
+						</ul>
+					</li>
+					<li><a href="{% url 'productmen' %}">МУЖСКОЕ</a></li>
+					<li><a href="{% url 'productwomen' %}">ЖЕНСКОЕ</a></li>
+					<li><a href="#">КРОССОВКИ</a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'productsneakersformen' %}">МУЖСКИЕ</a></li>
+							<li><a href="{% url 'productsneakersforwomen' %}">ЖЕНСКИЕ</a></li>
+						</ul>
+					</li>
+					<li><a href="#">ЧАСЫ</a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'chopard' %}">Chopard</a></li>
+							<li><a href="{% url 'degrisogono' %}">de GRISOGONO</a></li>
+							<li><a href="{% url 'girardperregaux' %}">Girard-Perregaux</a></li>
+							<li><a href="{% url 'hublot' %}">Hublot</a></li>
+							<li><a href="{% url 'breitling' %}">Breitling</a></li>
+							<li><a href="{% url 'tagheuer' %}">TAG Heuer</a></li>
+							<li><a href="{% url 'tudor' %}">Tudor</a></li>
+							<li><a href="{% url 'chanel' %}">Chanel</a></li>
+						</ul>
+					</li>
+					<li><a href="#">УКРАШЕНИЯ<span class="new">New</span></a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'productjewerlyformen' %}">МУЖСКОЕ</a></li>
+							<li><a href="{% url 'productjewerlyforwomen' %}">ЖЕНСКОЕ</a></li>
+						</ul>
+					</li>
+
+
+					<li><a href="#">СТРАНИЦЫ</a>
+						<ul class="sub-menu">
+							<li><a href="{% url 'product' %}">Товары</a></li>
+							<li><a href="{% url 'category' %}">Категории</a></li>
+							<li><a href="{% url 'cart' %}">Корзина</a></li>
+							<li><a href="{% url 'checkout' %}">Проверка</a></li>
+							<li><a href="{% url 'contact' %}">Контакты</a></li>
+						</ul>
+					</li>
+					<li><a href="{% url 'news' %}">НОВОСТИ</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<!-- Header section end -->
+
+
+	<!-- Page info -->
+	<div class="page-top-info">
+		<div class="container">
+			<h4>Кроссовки</h4>
+			<div class="site-pagination">
+				<a href="{% url 'index' %}">Домой</a> /
+				<a href="{% url 'category' %}">Категории</a>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
+
+
+	<!-- product section -->
+	<section class="product-section">
+		<div class="container">
+			<div class="back-link">
+				<a href="{% url 'category' %}"> &lt;&lt; Назад в категории</a>
+			</div>
+			<div class="row">
+				<div class="col-lg-6">
+					{% for p in productsneakers %}
+					{% if p.women == 'SNEAKERS' %}
+					<div class="product-pic-zoom">
+						{% if p.photo_product %}
+						<img src="{{p.photo_product.url}}">
+						{% endif %}
+					</div>
+					<div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+						<div class="product-thumbs-track">
+							{% if p.photo_another %}
+							<div class="pt active" data-imgbigurl="{{p.photo_another.url}}"><img src="{{p.photo_another.url}}" alt=""></div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 product-details">
+					<h2 class="p-title">{{p.title}}</h2>
+					<h3 class="p-price">{{p.price}}</h3>
+					<h4 class="p-stock">Товар: <span>{{p.available}}</span></h4>
+					<div class="p-review">
+						<a href="{% url 'showcomment' p.slug %}">Комментарии</a>|<a href="{% url 'comment' p.slug %}">Добавить комментарий</a>
+					</div>
+					<div class="fw-size-choose">
+						<p>Размер</p>
+						{% if p.size %}
+						<div class="sc-item">
+							<input type="radio" name="sc" id="xs-size">
+							<label for="xs-size">{{p.size}}</label>
+						</div>
+						{% endif %}
+						{% if p.size_two %}
+						<div class="sc-item">
+							<input type="radio" name="sc" id="s-size">
+							<label for="s-size">{{p.size_two}}</label>
+						</div>
+						{% endif %}
+						{% if p.size_three %}
+						<div class="sc-item">
+							<input type="radio" name="sc" id="m-size">
+							<label for="m-size">{{p.size_three}}</label>
+						</div>
+						{% endif %}
+						{% if p.size_four %}
+						<div class="sc-item">
+							<input type="radio" name="sc" id="l-size">
+							<label for="l-size">{{p.size_four}}</label>
+						</div>
+						{% endif %}
+						</div>
+					</div>
+					<a href="{% url 'product' %}" class="site-btn">ДОБАВИТЬ В КОРЗИНУ</a>
+				    <a href="{% url 'checkout' %}" class="site-btn">КУПИТЬ В ОДИН КЛИК</a>
+					<div id="accordion" class="accordion-area">
+						<div class="panel">
+							<div class="panel-header" id="headingOne">
+								<button class="panel-link active" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">Информация</button>
+							</div>
+							<div id="collapse1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="panel-body">
+									<p>{{p.about}}</p>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="panel-header" id="headingThree">
+								<button class="panel-link" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Покупка & Возврат</button>
+							</div>
+							<div id="collapse3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+								<div class="panel-body">
+									<h4>Возврат в течение 7 дней</h4>
+									<p>Оплата наличными при доставки доступно<br>Доставка на дом <span>3 - 4 дня</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- product section end -->
+
+
+	<!-- Footer section -->
+	<section class="footer-section">
+		<div class="container">
+			<div class="footer-logo text-center">
+				<a href="index.html"><img src="{% static 'shop/./images/logo-light.png' %}" alt=""></a>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>About</h2>
+						<p>INFINITY-это один из крупнейших интернет магазинов товаров, который уже более 4 лет обеспечивает товарами более миллиона человек по всему миру. В 2021 году было принято решение доставлять наши товары по всему миру, и сегодня каждый может по достоинству оценить наш товар.</p>
+						<img src="{% static 'shop/images/cards.png' %}" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Questions</h2>
+						<ul>
+							<li><a href="">О нас</a></li>
+							<li><a href="">Отслеживать заказы</a></li>
+							<li><a href="">Возврат</a></li>
+							<li><a href="">Работа</a></li>
+							<li><a href="">Доставка</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Партнеры</a></li>
+							<li><a href="">Поддержка</a></li>
+							<li><a href="">Условия пользования</a></li>
+							<li><a href="">Блог</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget contact-widget">
+						<h2>Questions</h2>
+						<div class="con-info">
+							<span>C.</span>
+							<p>INFT</p>
+						</div>
+						<div class="con-info">
+							<span>B.</span>
+							<p>Krasnodar city, 52 komarova Street</p>
+						</div>
+						<div class="con-info">
+							<span>T.</span>
+							<p>+79884527482</p>
+						</div>
+						<div class="con-info">
+							<span>E.</span>
+							<p>Infinity@gmail.com</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+				</div>
+
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<p class="text-white text-center mt-5">Copyright &copy;2021 All rights reserved</p>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+			</div>
+		</div>
+	</section>
+	<!-- Footer section end -->
+
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="{% static 'shop/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'shop/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'shop/js/jquery.slicknav.min.js' %}"></script>
+	<script src="{% static 'shop/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'shop/js/jquery.nicescroll.min.js' %}"></script>
+	<script src="{% static 'shop/js/jquery.zoom.min.js' %}"></script>
+	<script src="{% static 'shop/js/jquery-ui.min.js' %}"></script>
+	<script src="{% static 'shop/js/main.js' %}"></script>
+
+	</body>
+</html>
